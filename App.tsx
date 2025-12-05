@@ -1,37 +1,39 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import { NewAppScreen } from '@react-native/new-app-screen';
+import React, { useEffect } from 'react';
 import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { AuthProvider } from "./src/Auth/AuthContext";
+import AppTabs from './src/navigation/AppTab';
+import { CartProvider } from './src/context/CartContext';
+import { initDatabase } from './src/database/data';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
+  useEffect(() => {
+    initDatabase()
+      .then(() => console.log('✅ Database ready'))
+      .catch(err => console.error('❌ Database error:', err));
+  }, []);
+
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+    <>
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" translucent={false} />
       <AppContent />
-    </SafeAreaProvider>
+    </>
   );
 }
 
 function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
   return (
     <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
+      <AuthProvider>
+        <CartProvider>
+          <NavigationContainer>
+            <AppTabs />
+          </NavigationContainer>
+        </CartProvider>
+      </AuthProvider>
     </View>
   );
 }
@@ -39,6 +41,9 @@ function AppContent() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff',
+    paddingTop: 40,
+    marginTop: 0,
   },
 });
 

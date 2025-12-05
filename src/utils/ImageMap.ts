@@ -1,0 +1,16 @@
+export const productImages: { [key: string]: any } = {
+  bomber_jacket: require('../assets/products_images/bomber_jacket.jpg'),
+  snapback1: require('../assets/products_images/Snapback_BKNY.png'),
+  snapbak2: require('../assets/products_images/Snapback_Chu_C_Luoi_Da.png'),
+  aosomi1: require('../assets/products_images/Ao_somi_vai_cotton_linen_cotru.png'),
+  aosomi2: require('../assets/products_images/Aosomi_Oxford_Body.png'),
+  aosomi3: require('../assets/products_images/BBC_Shirt_Open-Collar.jpg'),
+  giay1: require('../assets/products_images/adidas-GRAND-COURT.jpg'),
+  giay2: require('../assets/products_images/giay-MWC-A345.jpg'),
+  giay3: require('../assets/products_images/giay-nike-G.T.Hustle-Academy.jpg'),
+  giay4: require('../assets/products_images/MWC-A346.jpg'),
+  quan1: require('../assets/products_images/Quan-Baggy-Jean-nam-nu-2b-1.jpg'),
+  quan2: require('../assets/products_images/Quan-jean-ong-rong-ca-tinh.jpg'),
+  balo1: require('../assets/products_images/Balo-multibox-streetwear-big-size-trang-59-18-ZiZoou-Store.jpg'),
+  balo2: require('../assets/products_images/Balo-nap-gap-ca-tinh-54-22-ZiZoou-Store.jpg'),
+};
